@@ -1,0 +1,25 @@
+%align-center {
+  text-align: center;
+}
+.tabuada {
+  &__titulo {
+    @extend %align-center;
+    margin-top: 10px;
+  }
+  &__table {
+    width: 100%;
+  }
+  &__form {
+    min-width: 150px;
+    max-width: 250px;
+    width: 100%;
+    display: inline-block;
+    margin-right: 10px;
+    &--full-width {
+      width: 100%;
+    }
+    &--wrapper {
+      @extend %align-center;
+    }
+  }
+}
