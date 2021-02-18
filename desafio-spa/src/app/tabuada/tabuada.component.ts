@@ -36,6 +36,5 @@ export class TabuadaComponent implements OnInit {
       });
     }
     this.valoresTabuada = this.tabuada;
-    console.log(this.valoresTabuada);
   }
 }

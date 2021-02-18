@@ -1,1 +1,111 @@
-<p>porcentagem works!</p>
+<div class="porcentagem">
+  <div class="porcentagem__wrapper">
+    <h2 class="porcentagem__titulo">Porcentagem para valor</h2>
+    <form
+      class="porcentagem__form"
+      [formGroup]="porcentagemParaValor"
+      (ngSubmit)="onPorcentagemParaValor()"
+    >
+      <div class="porcentagem__form--wrapper">
+        <mat-form-field class="porcentagem__form--full-width">
+          <mat-label>Valor</mat-label>
+          <input
+            type="number"
+            matInput
+            formControlName="porcentagem"
+            placeholder="10"
+          />
+
+          <span matSuffix>%</span>
+          <mat-error
+            *ngIf="
+              porcentagemParaValor.controls['porcentagem'].hasError('required')
+            "
+          >
+            Por favor insira um <strong>número</strong>
+          </mat-error>
+        </mat-form-field>
+        <p>De</p>
+        <mat-form-field class="porcentagem__form--full-width">
+          <mat-label>Valor total</mat-label>
+          <input
+            type="number"
+            matInput
+            formControlName="valorTotal"
+            placeholder="10"
+          />
+
+          <mat-error
+            *ngIf="
+              porcentagemParaValor.controls['valorTotal'].hasError('required')
+            "
+          >
+            Por favor insira um <strong>número</strong>
+          </mat-error>
+        </mat-form-field>
+        <p>=</p>
+        <p>{{ resultadoPorcentagemParaValor }}</p>
+      </div>
+      <button
+        mat-flat-button
+        [disabled]="porcentagemParaValor.invalid"
+        color="primary"
+      >
+        Calcular
+      </button>
+    </form>
+  </div>
+  <div class="porcentagem__wrapper">
+    <h2 class="porcentagem__titulo">Valor para porcentagem</h2>
+    <form
+      class="porcentagem__form"
+      [formGroup]="valorParaPorcentagem"
+      (ngSubmit)="onValorParaPorcentagem()"
+    >
+      <div class="porcentagem__form--wrapper">
+        <mat-form-field class="porcentagem__form--full-width">
+          <mat-label>Valor</mat-label>
+          <input
+            type="number"
+            matInput
+            formControlName="valor"
+            placeholder="10"
+          />
+
+          <mat-error
+            *ngIf="valorParaPorcentagem.controls['valor'].hasError('required')"
+          >
+            Por favor insira um <strong>número</strong>
+          </mat-error>
+        </mat-form-field>
+        <p>De</p>
+        <mat-form-field class="porcentagem__form--full-width">
+          <mat-label>Valor total</mat-label>
+          <input
+            type="number"
+            matInput
+            formControlName="valorTotal"
+            placeholder="10"
+          />
+
+          <mat-error
+            *ngIf="
+              valorParaPorcentagem.controls['valorTotal'].hasError('required')
+            "
+          >
+            Por favor insira um <strong>número</strong>
+          </mat-error>
+        </mat-form-field>
+        <p>=</p>
+        <p>{{ resultadoValorParaPorcentagem }}%</p>
+      </div>
+      <button
+        mat-flat-button
+        [disabled]="valorParaPorcentagem.invalid"
+        color="primary"
+      >
+        Calcular
+      </button>
+    </form>
+  </div>
+</div>
