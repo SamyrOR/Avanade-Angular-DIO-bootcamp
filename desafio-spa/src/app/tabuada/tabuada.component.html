@@ -1,28 +1,30 @@
 <div class="tabuada">
   <h2 class="tabuada__titulo">Descubra a tabuada</h2>
   <div class="tabuada__form--wrapper">
-    <form class="tabuada__form">
+    <form
+      [formGroup]="tabuadaForm"
+      (ngSubmit)="onSubmit()"
+      class="tabuada__form"
+    >
       <mat-form-field class="tabuada__form--full-width">
         <mat-label>Número</mat-label>
-        <input type="number" matInput [formControl]="valor" placeholder="1" />
+        <input type="number" matInput formControlName="valor" placeholder="1" />
         <mat-error
-          *ngIf="valor.hasError('maxLength') && !valor.hasError('required')"
+          *ngIf="
+            tabuadaForm.controls['valor'].hasError('maxLength') &&
+            !tabuadaForm.controls['valor'].hasError('required')
+          "
         >
           Não insira mais que um número
         </mat-error>
-        <mat-error *ngIf="valor.hasError('required')">
+        <mat-error *ngIf="tabuadaForm.controls['valor'].hasError('required')">
           Insira ao menos um <strong>número</strong>
         </mat-error>
       </mat-form-field>
+      <button [disabled]="tabuadaForm.invalid" mat-flat-button color="primary">
+        Ver tabuada
+      </button>
     </form>
-    <button
-      (click)="onClick()"
-      [disabled]="!valor.value"
-      mat-flat-button
-      color="primary"
-    >
-      Ver tabuada
-    </button>
   </div>
   <table
     *ngIf="mostrarTable"

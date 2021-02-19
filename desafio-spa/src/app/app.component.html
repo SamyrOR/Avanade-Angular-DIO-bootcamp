@@ -1,1 +1,9 @@
+<div id="teste" *ngIf="route.url != '/home'" class="bem-vindo">
+  <h2>Bem vindo!</h2>
+  <p>
+    Está é uma aplicação que calcula a tabuada, e faz cálculos de porcentagem,
+    desenvolvida como desafio para o bootcamp da Avanade Angular Developer
+  </p>
+  <a [routerLink]="['/home']" mat-flat-button color="primary">Iniciar</a>
+</div>
 <router-outlet></router-outlet>

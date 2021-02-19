@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 export interface Tabuada {
   valorInserido: number;
   multiplicador: number;
@@ -12,27 +12,31 @@ export interface Tabuada {
   styleUrls: ['./tabuada.component.scss'],
 })
 export class TabuadaComponent implements OnInit {
-  valor = new FormControl('', [Validators.required]);
+  tabuadaForm;
   tabuada: Tabuada[] = [];
   colunas: string[] = ['Valor', 'Multiplicador', 'Resultado'];
   valoresTabuada = null;
   mostrarTable: boolean = false;
-  constructor() {}
+  constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.tabuadaForm = this.formBuilder.group({
+      valor: [null, [Validators.required]],
+    });
+  }
 
-  onClick() {
+  onSubmit() {
     this.tabuada = [];
-    if (this.valor.value) {
+    if (this.tabuadaForm.get('valor').value) {
       this.mostrarTable = true;
     } else {
       this.mostrarTable = false;
     }
     for (let i = 1; i < 11; i++) {
       this.tabuada.push({
-        valorInserido: this.valor.value,
+        valorInserido: this.tabuadaForm.get('valor').value,
         multiplicador: i,
-        resultado: this.valor.value * i,
+        resultado: this.tabuadaForm.get('valor').value * i,
       });
     }
     this.valoresTabuada = this.tabuada;

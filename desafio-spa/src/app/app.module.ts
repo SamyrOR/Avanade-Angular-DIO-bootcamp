@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { TabuadaComponent } from './tabuada/tabuada.component';
 import { PorcentagemComponent } from './porcentagem/porcentagem.component';
 import { SobreComponent } from './sobre/sobre.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SobreComponent } from './sobre/sobre.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatTabsModule,

@@ -1,27 +1,28 @@
-# DesafioSpa
+# Desafio SPA Avanade Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+## Tabuada e calculadora de procentagem
 
-## Development server
+Aplicação SPA desenvolvida em Angular, utilizando SCSS como pre processador , e o tema Pink & Blue-grey
+Foi um ótimo desafio para colocar em práticas os conhecimentos sobre Angular, amei conclui-lo.
+Há muita coisa que refatorar, há muita coisa que pode se melhorada, mas foi feito com muito empenho e dedicação, espero que seja válido! #vamospracima
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Algumas boas práticas utilizadas
 
-## Code scaffolding
+- Estrutura BEM para o SCSS
+- Rotas
+- Ingeção de depêndencias e property bindings
+- Validações de formulário com reactive form e form builder
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Components
 
-## Build
+- Home - _Componente onde estão localizados os outros componentes_
+- Tabuada - _Componente responsável pela tabuada_
+- Porcentagem - _Componente responsável pelos cálculos de porcentagem_
+- Sobre - _Informações sobre a aplicação_
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Componentes do Angular Material utilizados
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Buttons
+- Form field
+- Tabs
+- Table

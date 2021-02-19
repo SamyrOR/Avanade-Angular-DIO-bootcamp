@@ -1,6 +1,10 @@
 .home {
+  &__titulo {
+    text-align: center;
+    margin-top: 10%;
+  }
   &__main {
-    margin-top: 30%;
+    margin-top: 5%;
   }
   &__footer {
     position: absolute;
