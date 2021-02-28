@@ -3,8 +3,8 @@ import {
   Component,
   Input,
   Output,
+  EventEmitter,
 } from '@angular/core';
-import { EventEmitter } from 'events';
 import { CityWeather } from 'src/app/shared/models/weather.model';
 
 @Component({
@@ -15,10 +15,13 @@ import { CityWeather } from 'src/app/shared/models/weather.model';
 })
 export class CurrentWeatherComponent {
   @Input() cityWeather: CityWeather;
+  @Input() isFavorite: boolean;
   @Output() toggleBookmark = new EventEmitter();
   get cityName(): string {
     return `${this.cityWeather.city.name} ${this.cityWeather.city.country}`;
   }
 
-  onToggleBookmark() {}
+  onToggleBookmark() {
+    this.toggleBookmark.emit();
+  }
 }
