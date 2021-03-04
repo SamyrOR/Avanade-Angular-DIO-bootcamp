@@ -1,15 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+
 import { select, Store } from '@ngrx/store';
-import { combineLatest, Observable, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { Observable, Subject, combineLatest } from 'rxjs';
+import { takeUntil, map } from 'rxjs/operators';
 
-import { Bookmark } from 'src/app/shared/models/bookmark.model';
 import { CityWeather } from 'src/app/shared/models/weather.model';
-
+import { Bookmark } from 'src/app/shared/models/bookmark.model';
 import * as fromHomeActions from '../../state/home.actions';
 import * as fromHomeSelectors from '../../state/home.selectors';
-import * as fromBookmarksSelectors from '../../../bookmarks/state/bookmarks.selector';
+import * as fromBookmarksSelectors from '../../../bookmarks/state/bookmarks.selectors';
+import { CityTypeaheadItem } from 'src/app/shared/models/city-typeahead-item.model';
 
 @Component({
   selector: 'jv-home',
@@ -26,12 +27,28 @@ export class HomePage implements OnInit, OnDestroy {
   isCurrentFavorite$: Observable<boolean>;
 
   searchControl: FormControl;
+  searchControlWithAutocomplete: FormControl;
+
+  text: string;
+
   private componentDestroyed$ = new Subject();
 
   constructor(private store: Store) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.searchControl = new FormControl('', Validators.required);
+    this.searchControlWithAutocomplete = new FormControl(undefined);
+    this.searchControlWithAutocomplete.valueChanges
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe((value: CityTypeaheadItem) => {
+        if (!!value) {
+          this.store.dispatch(
+            fromHomeActions.loadCurrentWeatherById({
+              id: value.geonameid.toString(),
+            })
+          );
+        }
+      });
     this.cityWeather$ = this.store.pipe(
       select(fromHomeSelectors.selectCurrentWeather)
     );

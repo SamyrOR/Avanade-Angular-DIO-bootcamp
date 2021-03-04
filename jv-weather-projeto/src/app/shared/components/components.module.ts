@@ -1,12 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+
 import { LoaderComponent } from './loader/loader.component';
 import { DetailedWeatherComponent } from './detailed-weather/detailed-weather.component';
+import { CitiesTypeaheadComponent } from './cities-typeahead/cities-typeahead.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [LoaderComponent, DetailedWeatherComponent],
-  exports: [LoaderComponent, DetailedWeatherComponent],
+  imports: [CommonModule, TypeaheadModule.forRoot(), FormsModule],
+  declarations: [
+    LoaderComponent,
+    DetailedWeatherComponent,
+    CitiesTypeaheadComponent,
+  ],
+  exports: [
+    LoaderComponent,
+    DetailedWeatherComponent,
+    CitiesTypeaheadComponent,
+  ],
 })
 export class ComponentsModule {}

@@ -1,11 +1,6 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-} from '@angular/core';
-import { CityWeather } from 'src/app/shared/models/weather.model';
+import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
+
+import { CityWeather } from '../../../../shared/models/weather.model';
 
 @Component({
   selector: 'jv-current-weather',
@@ -14,11 +9,13 @@ import { CityWeather } from 'src/app/shared/models/weather.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CurrentWeatherComponent {
+
   @Input() cityWeather: CityWeather;
   @Input() isFavorite: boolean;
   @Output() toggleBookmark = new EventEmitter();
+
   get cityName(): string {
-    return `${this.cityWeather.city.name} ${this.cityWeather.city.country}`;
+    return `${this.cityWeather.city.name}, ${this.cityWeather.city.country}`; 
   }
 
   onToggleBookmark() {

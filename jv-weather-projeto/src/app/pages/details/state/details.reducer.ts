@@ -1,6 +1,6 @@
 import { createReducer, Action, on } from '@ngrx/store';
 
-import { CityDailyWeather } from 'src/app/shared/models/weather.model';
+import { CityDailyWeather } from '../../../shared/models/weather.model';
 import * as fromDetailsActions from './details.actions';
 
 export interface DetailsState {
