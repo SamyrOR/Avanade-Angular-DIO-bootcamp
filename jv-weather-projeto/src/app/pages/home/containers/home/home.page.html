@@ -28,6 +28,7 @@
     <jv-current-weather
       [cityWeather]="cityWeather"
       [isFavorite]="isCurrentFavorite$ | async"
+      [unit]="units$ | async"
       (toggleBookmark)="onToggleBookmark()"
     ></jv-current-weather>
   </div>

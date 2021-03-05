@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
 import * as moment from 'moment-timezone';
+import { Units } from 'src/app/shared/models/units.enum';
+import { unitToSymbol } from 'src/app/shared/utils/units.utils';
 
 import { DailyWeather, Weather } from '../../../../shared/models/weather.model';
 
@@ -13,6 +15,7 @@ import { DailyWeather, Weather } from '../../../../shared/models/weather.model';
 export class DailyWeatherComponent {
   @Input() dailyWeather: DailyWeather;
   @Input() timeZone: string;
+  @Input() units: Units;
 
   get weather(): Weather {
     return this.dailyWeather.weather;
@@ -24,6 +27,10 @@ export class DailyWeatherComponent {
 
   get icon(): string {
     return `http://openweathermap.org/img/wn/${this.weather.icon}@2x.png`;
+  }
+
+  get unitSymbol(): string {
+    return unitToSymbol(this.units);
   }
 
   unixToHourMinute(value: number): string {
